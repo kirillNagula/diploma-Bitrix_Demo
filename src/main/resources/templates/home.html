@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        hr {
+            border: none; /* Убираем границу */
+            background-color: blue; /* Цвет линии */
+            color: blue; /* Цвет линии для IE6-7 */
+            height: 2px; /* Толщина линии */
+        }
+    </style>
+</head>
+<body>
+
+<table width="350">
+    <tr>
+        <th>Hello, <span th:text="${user.firstName}"></span></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td><a href="/home/task">Task (<span th:text="${taskNum}"></span>)</a></td>
+        <td><a href="/home/account">Account manager </a></td>
+        <td><form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+<hr>
+<a href="/home/chat">Add new Chat</a>
+<br>
+    <table width="300" hieght="900">
+        <tr>
+            <th>Chats list</th>
+        </tr>
+        <tr>
+            <td>
+                <table>
+
+                    <tr th:each="chat : ${chatList}">
+                        <th>
+                            <a th:href="@{/home/comment/{id}(id=${chat.getId()})}" th:text="${chat.name}">
+                            </a>
+                        </th>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+<br>
+<hr>
+
+</body>
+</html>

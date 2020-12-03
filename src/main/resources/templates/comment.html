@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment page</title>
+    <style>
+        hr {
+            border: none; /* Убираем границу */
+            background-color: red; /* Цвет линии */
+            color: darkgreen; /* Цвет линии для IE6-7 */
+            height: 2px; /* Толщина линии */
+        }
+    </style>
+</head>
+<body>
+    <a href="/home">Main</a>
+    <H3>Comment list chat: <span th:text="${chatObject.name}"></span></H3>
+        <br>
+        <br>
+    <p th:if="${commentList.isEmpty()}">No comment</p>
+    <ul th:each="com : ${commentList}">
+        <li>
+            <p><h4 th:text="${com.user.firstName}"></h4>:
+            <span th:text="${com.text}"></span> -
+            <span th:text="${com.dateTime.toString()}"></span>
+            </p>
+        </li>
+    </ul>
+    <br>
+    <hr>
+    <br>
+    <form th:action="@{/home/comment/add/{id}(id=${chatObject.getId()})}" method="post" th:object="${comment}">
+        <div>Message:<input type="text" th:field="*{message}"></div>
+        <br>
+        <button type="submit"> Add comment</button>
+    </form>
+</body>
+</html>

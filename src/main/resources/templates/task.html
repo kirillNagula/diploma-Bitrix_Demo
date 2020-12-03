@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+<a href="/home">Main</a>
+    <h2>Task page</h2>
+        <br>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Executor</th>
+            <th>DateTime</th>
+            <th></th>
+        </tr>
+        <tr th:each="t: ${taskList}">
+            <td th:text="${t.description}"></td>
+            <td><p th:text="${t.author.firstName}"> <span th:text="${t.author.lastName}"></span></p></td>
+            <td><p th:text="${t.executor.firstName}"> <span th:text="${t.executor.lastName}"></span> </p></td>
+            <td th:text="${t.dateTime}"></td>
+            <td><a th:href="@{/home/task/{id}(id=${t.getId()})}">Close</a> </td>
+        </tr>
+    </table>
+    <br>
+    <h2>Create task</h2>
+            <form th:action="@{/home/task}" method="post" th:object="${task}">
+                <div>Task description <input type="text" th:field="*{taskText}"></div>
+                <div> Task author <select  th:field="*{authorId}">
+                    <option th:each="user:${userList}" th:value="${user.getId()}" th:text="${user.getFirstName()}"></option>
+                </select></div>
+                <div> Task executor <select th:field="*{executorId}">
+                    <option  th:each="user : ${userList}"  th:value="${user.getId()}" th:text="${user.getFirstName()}"></option>
+                </select></div>
+                <div>Date&Time for task<input type="datetime-local" th:field="*{dateTime}"></div>
+                <button type="submit">Add Task</button>
+            </form>
+</body>
+</html>

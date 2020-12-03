@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Authorization</title>
+</head>
+<body>
+<H2>Bitrix-sample</H2>
+<center>
+    <div class="container" style="width: 300px;">
+    <form th:action="@{/login}" method="post">
+        <h2>Please sign in</h2>
+        <div><input type="text" placeholder="Login" name="username"></div>
+        <div><input type="password" placeholder="Password" name="password"></div>
+        <button type="submit">Authorization</button>
+    </form>
+        </div>
+    <div><a href="/registration">Do you want Registration?</a> </div>
+</center>
+</body>
+</html>
