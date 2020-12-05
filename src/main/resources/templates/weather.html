@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+</head>
+<body>
+<a href="/home">Main</a>
+<br>
+<H2>Погода в Минске</H2>
+<br>
+
+<div>Температура воздуха:<span th:text="${weather.getTemp()}"></span> градусов</div>
+<br>
+<div>Температура воздуха минимальная:<span th:text="${weather.getTemp_min()}"></span> градусов </div>
+<br>
+<div>Температура воздуха максимальная:<span th:text="${weather.getTemp_max()}"></span>  градусов</div>
+<br>
+<div>Температура по ощущению:<span th:text="${weather.getFeels_like()}"></span> градусов </div>
+<br>
+<div>Влажность:<span th:text="${weather.getHumidity()}"></span>%</div>
+<br>
+<div>Давление:<span th:text="${weather.getPressure()}"></span>Па</div>
+<br>
+<div>Скорость ветра: <span th:text="${wind.getWind()}"></span> м/с</div>
+<br>
+<div>Видимость:<span th:text="${wind.getVisibility()}"></span> lux</div>
+
+</body>
+</html>
