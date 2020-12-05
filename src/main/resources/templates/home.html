@@ -22,6 +22,7 @@
     <tr>
         <td><a href="/home/task">Task (<span th:text="${taskNum}"></span>)</a></td>
         <td><a href="/home/account">Account manager </a></td>
+        <td><a href="/home/">Weather page </a></td>
         <td><form th:action="@{/logout}" method="post">
             <button type="submit">Logout</button>
         </form>
@@ -31,9 +32,10 @@
 <br>
 <br>
 <hr>
-<a href="/home/chat">Add new Chat</a>
+
+<a th:if="${user.getPosition().equalsIgnoreCase('admin')}" href="/home/chat">Add new Chat</a>
 <br>
-    <table width="300" hieght="900">
+    <table width="800" hieght="900">
         <tr>
             <th>Chats list</th>
         </tr>
@@ -43,9 +45,10 @@
 
                     <tr th:each="chat : ${chatList}">
                         <th>
-                            <a th:href="@{/home/comment/{id}(id=${chat.getId()})}" th:text="${chat.name}">
-                            </a>
+                            <div> Chat name: <a th:href="@{/home/comment/{id}(id=${chat.getId()})}" th:text="${chat.name}">
+                            </a>        |</div>
                         </th>
+                        <th>In this chat you can <a th:href="@{/home/chatAdd/{id}(id=${chat.getId()})}">add person</a>!</th>
                     </tr>
                 </table>
             </td>

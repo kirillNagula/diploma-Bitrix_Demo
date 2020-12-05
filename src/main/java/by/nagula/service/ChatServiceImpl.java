@@ -48,4 +48,18 @@ public class ChatServiceImpl implements ChatService {
             throw new WrongIdException("Wrong id exception");
         }
     }
+
+    @Override
+    public void updateChat(Chat chat) {
+        chatRepository.save(chat);
+    }
+
+    @Override
+    public List<Chat> showChatsByUserId(long id) {
+        if (id > 0){
+            return chatRepository.findAllByUserListId(id);
+        } else {
+            throw new WrongIdException("Wrong id exception");
+        }
+    }
 }

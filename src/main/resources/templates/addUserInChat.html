@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UserManage</title>
+</head>
+<body>
+<a href="/home">Main</a>
+<br>
+<H2>Add user in chat:<span th:text="${nameChat}"></span> </H2>
+<br>
+<p>List users on this Chat</p>
+<br>
+<ul th:each="u : ${chatUserList}">
+    <li>
+        <div><span th:text="${u.firstName}"></span> : <span th:text="${u.lastName}"></span>
+        </div>
+    </li>
+</ul>
+<br>
+<form th:action="@{/home/chatAdd/{id}(id=${chatUserId})}" method="post" th:object="${userId}">
+    <select th:field="*{userId}">
+        <option th:each="user : ${userList}" th:value="${user.getId()}" th:text="${user.getFirstName()}"></option>
+    </select> </div>
+    <button type="submit">Add user</button>
+</form>
+</body>
+</html>

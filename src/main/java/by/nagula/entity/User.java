@@ -1,13 +1,9 @@
 package by.nagula.entity;
 
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -16,7 +12,6 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Valid
 @Table(name = "users")
 public class User implements UserDetails {
 
@@ -24,25 +19,25 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "Wrong First name")
-    @NotBlank(message = "Wrong First name")
-    @Size(min = 2, message = "Wrong First name")
+    @NotEmpty(message = "First name is empty")
+    @NotBlank(message = "First name is empty")
+    @Size(min = 2, message = "First name lesser then 2 char")
     private String firstName;
 
-    @NotEmpty(message = "Wrong Last name")
-    @NotBlank(message = "Wrong Last name")
-    @Size(min = 2, message = "Wrong Last name")
+    @NotEmpty(message = "Last name is empty")
+    @NotBlank(message = "Last name is empty")
+    @Size(min = 2, message = "Last name lesser then 2 char")
     private String lastName;
     private String position;
 
-    @NotEmpty(message = "Wrong Login")
-    @NotBlank(message = "Wrong Login")
-    @Size(min = 5, message = "Wrong Login")
+    @NotEmpty(message = "Login ie empty")
+    @NotBlank(message = "Login ie empty")
+    @Size(min = 3, message = "Login lesser then 3 char")
     private String username;
 
-    @NotEmpty(message = "Wrong Password")
-    @NotBlank(message = "Wrong Password")
-    @Size(min = 8, message = "Wrong Password")
+    @NotEmpty(message = "Password is empty")
+    @NotBlank(message = "Password is empty")
+    @Size(min = 8, message = "Password must be greater then 8 char!")
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

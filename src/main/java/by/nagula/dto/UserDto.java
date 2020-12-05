@@ -7,19 +7,19 @@ import javax.validation.constraints.Size;
 
 @Valid
 public class UserDto {
-    @NotEmpty(message = "Wrong First name")
-    @NotBlank(message = "Wrong First name")
-    @Size(min = 2, message = "Wrong First name")
+    @NotEmpty(message = "First name is empty")
+    @NotBlank(message = "First name is empty")
+    @Size(min = 2, message = "First name lesser then 2 char")
     private String firstName;
 
-    @NotEmpty(message = "Wrong Last name")
-    @NotBlank(message = "Wrong Last name")
-    @Size(min = 2, message = "Wrong Last name")
+    @NotEmpty(message = "Last name is empty")
+    @NotBlank(message = "Last name is empty")
+    @Size(min = 2, message = "Last name lesser then 2 char")
     private String lastName;
 
-    @NotEmpty(message = "Wrong Password")
-    @NotBlank(message = "Wrong Password")
-    @Size(min = 8, message = "Wrong Password")
+    @NotEmpty(message = "Password is empty")
+    @NotBlank(message = "Password is empty")
+    @Size(min = 8, message = "Password must be greater then 8 char!")
     private String password;
 
     public UserDto(String firstName, String lastName, String password) {

@@ -9,10 +9,9 @@
 <br>
 <br>
 <form th:action="@{/home/chat}" method="post" th:object="${newChat}">
-    <div><input type="text" placeholder="Chat name" th:field="*{name}"></div>
-    <div><select th:field="*{userId}">
-        <option th:each="user : ${userList}" th:value="${user.getId()}" th:text="${user.getFirstName()}"></option>
-    </select> </div>
+    <div>Chat name: <input type="text" placeholder="Chat name" th:field="*{name}"></div>
+    <div> <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">wrong name</p></div>
+    <br>
     <button type="submit">Create Chat</button>
 </form>
 

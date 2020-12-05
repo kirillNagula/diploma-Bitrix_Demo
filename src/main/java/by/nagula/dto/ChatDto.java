@@ -1,13 +1,16 @@
 package by.nagula.dto;
 
 
-public class ChatDto {
-    private String name;
-    private long userId;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
-    public ChatDto(String name, long userId) {
+public class ChatDto {
+    @NotEmpty(message = "Chat is empty")
+    @NotBlank(message = "Chat is empty")
+    private String name;
+
+    public ChatDto(String name) {
         this.name = name;
-        this.userId = userId;
     }
 
     public ChatDto() {
@@ -21,19 +24,10 @@ public class ChatDto {
         this.name = name;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
     @Override
     public String toString() {
         return "ChatDto{" +
                 "name='" + name + '\'' +
-                ", userId=" + userId +
                 '}';
     }
 }

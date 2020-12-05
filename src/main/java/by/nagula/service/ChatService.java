@@ -10,4 +10,6 @@ public interface ChatService {
     void removeChat(long id);
     List<Chat> showAllChats();
     Chat showChatById(long id);
+    void updateChat(Chat chat);
+    List<Chat> showChatsByUserId(long id);
 }

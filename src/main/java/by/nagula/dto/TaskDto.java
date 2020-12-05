@@ -1,6 +1,11 @@
 package by.nagula.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 public class TaskDto {
+    @NotEmpty(message = "Task is empty")
+    @NotBlank(message = "Task is empty")
     private String taskText;
     private long authorId;
     private long executorId;

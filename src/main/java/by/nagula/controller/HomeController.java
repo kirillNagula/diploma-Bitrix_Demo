@@ -24,7 +24,7 @@ public class HomeController {
     @GetMapping
     public ModelAndView getPage(ModelAndView modelAndView, Authentication authentication){
         User user = (User) authentication.getPrincipal();
-        modelAndView.addObject("chatList", chatService.showAllChats());
+        modelAndView.addObject("chatList", chatService.showChatsByUserId(user.getId()));
         modelAndView.addObject("user", user);
         modelAndView.addObject("taskNum", taskService.showAllTasksByUserId(user.getId()).size());
         modelAndView.setViewName("home");

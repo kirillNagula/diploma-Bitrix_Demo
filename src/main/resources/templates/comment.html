@@ -20,10 +20,10 @@
     <p th:if="${commentList.isEmpty()}">No comment</p>
     <ul th:each="com : ${commentList}">
         <li>
-            <p><h4 th:text="${com.user.firstName}"></h4>:
+            <div><span th:text="${com.user.firstName}"></span>:
             <span th:text="${com.text}"></span> -
             <span th:text="${com.dateTime.toString()}"></span>
-            </p>
+            </div>
         </li>
     </ul>
     <br>

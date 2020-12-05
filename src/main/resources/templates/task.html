@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Task</title>
+    <style>
+        hr {
+            border: none; /* Убираем границу */
+            background-color: brown; /* Цвет линии */
+            color: white; /* Цвет линии для IE6-7 */
+            height: 2px; /* Толщина линии */
+        }
+    </style>
 </head>
 <body>
 <a href="/home">Main</a>
@@ -17,6 +25,7 @@
             <th></th>
         </tr>
         <tr th:each="t: ${taskList}">
+
             <td th:text="${t.description}"></td>
             <td><p th:text="${t.author.firstName}"> <span th:text="${t.author.lastName}"></span></p></td>
             <td><p th:text="${t.executor.firstName}"> <span th:text="${t.executor.lastName}"></span> </p></td>
@@ -24,17 +33,18 @@
             <td><a th:href="@{/home/task/{id}(id=${t.getId()})}">Close</a> </td>
         </tr>
     </table>
+    <p th:if="${taskList.isEmpty()}">You don't have task:)</p>
     <br>
+    <hr>
     <h2>Create task</h2>
             <form th:action="@{/home/task}" method="post" th:object="${task}">
-                <div>Task description <input type="text" th:field="*{taskText}"></div>
-                <div> Task author <select  th:field="*{authorId}">
-                    <option th:each="user:${userList}" th:value="${user.getId()}" th:text="${user.getFirstName()}"></option>
-                </select></div>
-                <div> Task executor <select th:field="*{executorId}">
+                <div>Task description: <input type="text" th:field="*{taskText}"></div>
+                <div> <p th:if="${#fields.hasErrors('taskText')}" th:errors="*{taskText}">error with text</p></div>
+                <div> Task author: <span th:text="${author}"></span></div>
+                <div> Task executor: <select th:field="*{executorId}">
                     <option  th:each="user : ${userList}"  th:value="${user.getId()}" th:text="${user.getFirstName()}"></option>
                 </select></div>
-                <div>Date&Time for task<input type="datetime-local" th:field="*{dateTime}"></div>
+                <div>Date&Time for task:<input type="datetime-local" th:field="*{dateTime}"></div>
                 <button type="submit">Add Task</button>
             </form>
 </body>

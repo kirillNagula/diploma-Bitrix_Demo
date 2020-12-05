@@ -2,7 +2,6 @@ package by.nagula.controller;
 
 import by.nagula.entity.User;
 import by.nagula.service.UserService;
-import by.nagula.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,7 +20,7 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
-    @GetMapping()
+    @GetMapping
     public ModelAndView getPage(ModelAndView modelAndView){
         modelAndView.addObject("user",new User() );
         modelAndView.setViewName("registration");
@@ -29,9 +28,9 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public ModelAndView getPost(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, ModelAndView modelAndView){
+    public ModelAndView getPost(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, ModelAndView modelAndView){
         if (bindingResult.hasErrors()){
-            modelAndView.setViewName("registration");
+           modelAndView.setViewName("registration");
         } else {
             userService.createUser(user);
             modelAndView.setViewName("redirect:/login");

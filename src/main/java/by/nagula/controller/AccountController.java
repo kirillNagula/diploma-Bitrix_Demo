@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping(path = "/home")
 public class AccountController {
@@ -29,7 +31,7 @@ public class AccountController {
     }
 
     @PostMapping("/account")
-    public ModelAndView postPage(@ModelAttribute("userAc") UserDto userDto, BindingResult bindingResult, ModelAndView modelAndView, Authentication authentication){
+    public ModelAndView postPage(@ModelAttribute("userAc") @Valid UserDto userDto, BindingResult bindingResult, ModelAndView modelAndView, Authentication authentication){
         if (bindingResult.hasErrors()){
             modelAndView.setViewName("account");
         } else {
