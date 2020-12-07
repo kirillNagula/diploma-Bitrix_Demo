@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body>
+<body bgcolor="aqua">
 <a href="/home">Main</a>
     <h2>Task page</h2>
         <br>
@@ -36,16 +36,16 @@
     <p th:if="${taskList.isEmpty()}">You don't have task:)</p>
     <br>
     <hr>
-    <h2>Create task</h2>
+    <h2 style="text-indent:70px">Create task</h2>
             <form th:action="@{/home/task}" method="post" th:object="${task}">
-                <div>Task description: <input type="text" th:field="*{taskText}"></div>
-                <div> <p th:if="${#fields.hasErrors('taskText')}" th:errors="*{taskText}">error with text</p></div>
-                <div> Task author: <span th:text="${author}"></span></div>
-                <div> Task executor: <select th:field="*{executorId}">
+                <div style="text-indent:100px">Task description: <input type="text" th:field="*{taskText}"></div>
+                <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('taskText')}" th:errors="*{taskText}">error with text</p></div>
+                <div style="text-indent:100px"> Task author: <span th:text="${author}"></span></div>
+                <div style="text-indent:100px"> Task executor: <select th:field="*{executorId}">
                     <option  th:each="user : ${userList}"  th:value="${user.getId()}" th:text="${user.getFirstName()}"></option>
                 </select></div>
-                <div>Date&Time for task:<input type="datetime-local" th:field="*{dateTime}"></div>
-                <button type="submit">Add Task</button>
+                <div style="text-indent:100px">Date&Time for task:<input type="datetime-local" th:field="*{dateTime}"></div>
+                <div style="text-indent:100px"><button type="submit">Add Task</button></div>
             </form>
 </body>
 </html>

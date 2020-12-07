@@ -1,6 +1,5 @@
 package by.nagula.service;
 
-import by.nagula.dto.ChatDto;
 import by.nagula.entity.Chat;
 import by.nagula.repository.ChatRepository;
 import by.nagula.service.exception.NoChatException;
@@ -12,7 +11,6 @@ import java.util.List;
 
 @Service
 public class ChatServiceImpl implements ChatService {
-
     @Autowired
     private ChatRepository chatRepository;
 

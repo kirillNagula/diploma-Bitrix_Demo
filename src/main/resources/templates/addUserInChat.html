@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>UserManage</title>
+    <style>
+        .colortext {
+            background-color: aqua; /* Цвет фона */
+            color: brown; /* Цвет текста */
+        }
+    </style>
 </head>
-<body>
+<body bgcolor="aqua">
 <a href="/home">Main</a>
 <br>
 <H2>Add user in chat:<span th:text="${nameChat}"></span> </H2>
@@ -19,7 +25,7 @@
 </ul>
 <br>
 <form th:action="@{/home/chatAdd/{id}(id=${chatUserId})}" method="post" th:object="${userId}">
-    <select th:field="*{userId}">
+    <select class="colortext" th:field="*{userId}">
         <option th:each="user : ${userList}" th:value="${user.getId()}" th:text="${user.getFirstName()}"></option>
     </select> </div>
     <button type="submit">Add user</button>

@@ -1,14 +1,14 @@
 package by.nagula.entity;
 
 public class Temperature {
-    private double temp;
-    private double feels_like;
-    private double temp_min;
-    private double temp_max;
+    private String temp;
+    private String feels_like;
+    private String temp_min;
+    private String temp_max;
     private int pressure;
     private int humidity;
 
-    public Temperature(double temp, double feels_like, double temp_min, double temp_max, int pressure, int humidity) {
+    public Temperature(String temp, String feels_like, String temp_min, String temp_max, int pressure, int humidity) {
         this.temp = temp;
         this.feels_like = feels_like;
         this.temp_min = temp_min;
@@ -20,36 +20,36 @@ public class Temperature {
     public Temperature() {
     }
 
-    public double getTemp() {
+    public String getTemp() {
         return temp;
     }
 
-    public void setTemp(double temp) {
-        this.temp = Math.round((temp  * 100d)/100);
+    public void setTemp(String temp) {
+        this.temp = temp;
     }
 
-    public double getFeels_like() {
+    public String getFeels_like() {
         return feels_like;
     }
 
-    public void setFeels_like(double feels_like) {
-        this.feels_like = Math.round((feels_like * 100d)/100);
+    public void setFeels_like(String feels_like) {
+        this.feels_like = feels_like;
     }
 
-    public double getTemp_min() {
+    public String getTemp_min() {
         return temp_min;
     }
 
-    public void setTemp_min(double temp_min) {
-        this.temp_min = Math.round((feels_like * 100d)/100);
+    public void setTemp_min(String temp_min) {
+        this.temp_min = temp_min;
     }
 
-    public double getTemp_max() {
+    public String getTemp_max() {
         return temp_max;
     }
 
-    public void setTemp_max(double temp_max) {
-        this.temp_max = Math.round((temp_max * 100d)/100);
+    public void setTemp_max(String temp_max) {
+        this.temp_max = temp_max;
     }
 
     public int getPressure() {

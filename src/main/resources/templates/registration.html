@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <style>
+        .colortext {
+            background-color: aqua; /* Цвет фона */
+            color: brown; /* Цвет текста */
+        }
+    </style>
 </head>
-<body>
-    <H2>Bitrix-sample</H2>
-<div>Registration form</div>
+<body bgcolor="aqua">
+    <H2 >Bitrix-sample</H2>
+<div style="text-indent:100px">Registration form:</div>
+    <br>
 <form th:action="@{/registration}" method="post" th:object="${user}">
-    <div><input type="text" placeholder="First Name" th:field="*{firstName}"></div>
-    <div> <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">wrong first Name</p></div>
-    <div><input type="text" placeholder="Last Name" th:field="*{lastName}"></div>
-    <div> <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">wrong last Name</p></div>
-    <div><input type="text" placeholder="Login" th:field="*{username}"></div>
-    <div> <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">wrong login</p></div>
-    <div><input type="text" placeholder="Password" th:field="*{password}"></div>
-    <div> <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">wrong password</p></div>
-    <div><select th:field="*{position}">
+    <div style="text-indent:100px">Please enter first name</div>
+    <div style="text-indent:100px"><input type="text" class="colortext" placeholder="First Name" th:field="*{firstName}"></div>
+    <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">wrong first Name</p></div>
+    <br>
+    <div style="text-indent:100px">Please enter last name</div>
+    <div style="text-indent:100px"><input type="text" class="colortext" placeholder="Last Name" th:field="*{lastName}"></div>
+    <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">wrong last Name</p></div>
+    <br>
+    <div style="text-indent:100px">Please enter login</div>
+    <div style="text-indent:100px"><input type="text" class="colortext" placeholder="Login" th:field="*{username}"></div>
+    <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">wrong login</p></div>
+    <br>
+    <div style="text-indent:100px">Please enter password</div>
+    <div style="text-indent:100px"><input type="text" class="colortext" placeholder="Password" th:field="*{password}"></div>
+    <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">wrong password</p></div>
+    <br>
+    <div style="text-indent:100px">Please choose your role</div>
+    <div style="text-indent:100px"><select class="colortext" th:field="*{position}">
     <option value="admin">Administrator</option>
     <option value="user">User</option>
     </select></div>
-    <button type="submit">Registration</button>
+    <div style="text-indent:100px"><button type="submit" >Registration</button></div>
 </form>
-    <div th:text="${messageInReg}"></div>
+
 
 </body>
 </html>

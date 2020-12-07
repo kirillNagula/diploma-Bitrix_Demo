@@ -10,15 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 @Controller
 @RequestMapping(path = "/home")
 public class WeatherController {
     private static final String URLs = "http://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=d4ff6f3eae5a8a2a0919410237405626";
-    @Autowired
-    private JsonParserService parserService;
+    private final JsonParserService parserService;
+
+    public WeatherController(JsonParserService parserService) {
+        this.parserService = parserService;
+    }
 
     @GetMapping(path = "/weather")
     public ModelAndView  getPage(ModelAndView modelAndView) {
@@ -34,5 +36,4 @@ public class WeatherController {
         modelAndView.setViewName("weather");
         return modelAndView;
     }
-
 }

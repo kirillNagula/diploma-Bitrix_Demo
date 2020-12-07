@@ -31,12 +31,14 @@ public class AccountController {
     }
 
     @PostMapping("/account")
-    public ModelAndView postPage(@ModelAttribute("userAc") @Valid UserDto userDto, BindingResult bindingResult, ModelAndView modelAndView, Authentication authentication){
+    public ModelAndView postPage(@ModelAttribute("userAc") @Valid UserDto userDto,
+                                 BindingResult bindingResult,
+                                 ModelAndView modelAndView,
+                                 Authentication authentication){
         if (bindingResult.hasErrors()){
             modelAndView.setViewName("account");
         } else {
             User user = (User)authentication.getPrincipal();
-            System.out.println(user);
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
             user.setPassword(userDto.getPassword());

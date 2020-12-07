@@ -34,7 +34,9 @@ public class CommentController {
     }
 
     @PostMapping(path = "/comment/add/{id}")
-    public ModelAndView addPost(@PathVariable long id, @ModelAttribute("comment") CommentDto commentDto, ModelAndView modelAndView, Authentication authentication){
+    public ModelAndView addPost(@PathVariable long id, @ModelAttribute("comment") CommentDto commentDto,
+                                ModelAndView modelAndView,
+                                Authentication authentication){
         Comment comment = new Comment();
         comment.setChatId(id);
         comment.setText(commentDto.message);

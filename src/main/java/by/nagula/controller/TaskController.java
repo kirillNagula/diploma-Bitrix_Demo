@@ -35,7 +35,10 @@ public class TaskController {
     }
 
     @PostMapping(path = "/task")
-    public ModelAndView post(@ModelAttribute("task") @Valid TaskDto task, BindingResult bindingResult, ModelAndView modelAttribute, Authentication authentication){
+    public ModelAndView post(@ModelAttribute("task") @Valid TaskDto task,
+                             BindingResult bindingResult,
+                             ModelAndView modelAttribute,
+                             Authentication authentication){
         if(bindingResult.hasErrors()){
             modelAttribute.setViewName("task");
         } else {
@@ -50,7 +53,8 @@ public class TaskController {
     }
 
     @GetMapping (path = "/task/{id}")
-    public ModelAndView postAndClose(@PathVariable long id, ModelAndView modelAndView,  Authentication authentication){
+    public ModelAndView postAndClose(@PathVariable long id, ModelAndView modelAndView,
+                                     Authentication authentication){
         taskService.closeTask(id);
         return getPage(modelAndView, authentication);
     }

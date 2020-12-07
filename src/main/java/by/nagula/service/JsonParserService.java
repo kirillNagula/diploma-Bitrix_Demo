@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.text.DecimalFormat;
 
 @Service
 public class JsonParserService {
+    private final DecimalFormat d = new DecimalFormat("##.00");
 
     private String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -34,10 +36,10 @@ public class JsonParserService {
     public Temperature getTemp(JSONObject jsonObj){
         JSONObject jsonObject = jsonObj.getJSONObject("main");
         Temperature temperature = new Temperature();
-        temperature.setTemp((Double) jsonObject.get("temp") - 273.15);
-        temperature.setTemp_min((Double) jsonObject.get("temp_min") - 273.15);
-        temperature.setTemp_max((Double) jsonObject.get("temp_max") - 273.15);
-        temperature.setFeels_like((Double) jsonObject.get("feels_like") - 273.15);
+        temperature.setTemp(d.format((Double) jsonObject.get("temp") - 273.15));
+        temperature.setTemp_min(d.format((Double) jsonObject.get("temp_min") - 273.15));
+        temperature.setTemp_max(d.format((Double) jsonObject.get("temp_max") - 273.15));
+        temperature.setFeels_like(d.format((Integer) jsonObject.get("feels_like") - 273.15));
         temperature.setPressure((Integer) jsonObject.get("pressure"));
         temperature.setHumidity((Integer) jsonObject.get("humidity"));
         return temperature;
@@ -50,5 +52,4 @@ public class JsonParserService {
         wind.setVisibility((Integer) jsonObj.get("visibility"));
         return wind;
     }
-
 }

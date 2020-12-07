@@ -3,22 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Account</title>
+    <style>
+        .colortext {
+            background-color: aqua; /* Цвет фона */
+            color: brown; /* Цвет текста */
+        }
+    </style>
 </head>
-<body>
+<body bgcolor="aqua">
 <a href="/home">Main</a>
 <br>
 <H2>Bitrix-sample</H2>
 <br>
-<div>Account page</div>
+<div style="text-indent:70px">Account page</div>
 <br>
 <form th:action="@{/home/account}" method="post" th:object="${userAc}">
-    <div><input type="text" placeholder="First Name" th:field="*{firstName}"></div>
-    <div> <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">wrong first Name</p></div>
-    <div><input type="text" placeholder="Last Name" th:field="*{lastName}"></div>
-    <div> <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">wrong last Name</p></div>
-    <div><input type="text" placeholder="Password" th:field="*{password}"></div>
-    <div> <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">wrong password</p></div>
-    <button type="submit">Change</button>
+    <div style="text-indent:100px">Please enter your first name</div>
+    <div style="text-indent:100px"><input type="text" placeholder="First Name" class="colortext" th:field="*{firstName}"></div>
+    <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">wrong first Name</p></div>
+    <br>
+    <div style="text-indent:100px">Please enter your last name</div>
+    <div style="text-indent:100px"><input type="text" placeholder="Last Name" class="colortext" th:field="*{lastName}"></div>
+    <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">wrong last Name</p></div>
+    <br>
+    <div style="text-indent:100px">Please enter new password</div>
+    <div style="text-indent:100px"><input type="text" placeholder="Password" class="colortext" th:field="*{password}"></div>
+    <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">wrong password</p></div>
+    <div style="text-indent:100px"><button type="submit">Change</button></div>
 </form>
 </body>
 </html>

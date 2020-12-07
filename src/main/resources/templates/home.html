@@ -10,15 +10,26 @@
             color: blue; /* Цвет линии для IE6-7 */
             height: 2px; /* Толщина линии */
         }
+        A.dot {
+            text-decoration: none; /* Убираем подчеркивание */
+            border-bottom: 1px dashed #000080; /* Добавляем свою линию */
+        }
+        A.dot:hover {
+            color: #f00000; /* Цвет ссылки при наведении на нее курсора */
+        }
     </style>
 </head>
-<body>
+<body bgcolor="aqua">
 
 <table width="350">
     <tr>
-        <th>Hello, <span th:text="${user.firstName}"></span></th>
+        <th>Hello, <span th:text="${user.firstName}"></span>
+        <br>
+        </th>
         <th></th>
+
     </tr>
+
     <tr>
         <td><a href="/home/task">Task (<span th:text="${taskNum}"></span>)</a></td>
         <td><a href="/home/account">Account manager </a></td>
@@ -37,25 +48,25 @@
 <br>
     <table width="800" hieght="900">
         <tr>
-            <th>Chats list</th>
+            <th>Chats list
+            <br></th>
         </tr>
         <tr>
             <td>
                 <table>
 
                     <tr th:each="chat : ${chatList}">
-                        <th>
-                            <div> Chat name: <a th:href="@{/home/comment/{id}(id=${chat.getId()})}" th:text="${chat.name}">
-                            </a>        |</div>
+                        <th style="text-indent:100px">
+                            <div><a th:href="@{/home/comment/{id}(id=${chat.getId()})}" th:text="${chat.name}">
+                            </a></div>
                         </th>
-                        <th>In this chat you can <a th:href="@{/home/chatAdd/{id}(id=${chat.getId()})}">add person</a>!</th>
+                        <th style="text-indent:100px"><br><a th:href="@{/home/chatAdd/{id}(id=${chat.getId()})}" class="dot">+</a></th>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
 <br>
-<hr>
 
 </body>
 </html>

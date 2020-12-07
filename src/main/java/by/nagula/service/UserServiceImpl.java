@@ -2,6 +2,7 @@ package by.nagula.service;
 
 import by.nagula.entity.User;
 import by.nagula.repository.UserRepository;
+import by.nagula.service.exception.NoUserById;
 import by.nagula.service.exception.UserAlreadyExistException;
 import by.nagula.service.exception.WrongIdException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,7 +40,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User showUserById(long id) {
         if (id > 0){
-            return userRepository.findById(id).get();
+            if (userRepository.findById(id).isPresent()){
+                return userRepository.findById(id).get();
+            } else {
+                throw new NoUserById("No user with this id");
+            }
         } else {
             throw new WrongIdException("Wrong id");
         }
@@ -83,6 +88,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public void update(User user) {
+        if (user == null){
+            throw new NullPointerException("Null from controller");
+        }
         userRepository.save(user);
     }
 

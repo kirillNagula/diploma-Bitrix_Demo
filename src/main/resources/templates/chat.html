@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>Chat manager</title>
 </head>
-<body>
+<body bgcolor="aqua">
 <H2>Chat manager</H2>
 <br>
 <br>
 <form th:action="@{/home/chat}" method="post" th:object="${newChat}">
-    <div>Chat name: <input type="text" placeholder="Chat name" th:field="*{name}"></div>
-    <div> <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">wrong name</p></div>
+    <div style="text-indent:100px">Chat name: <input type="text" placeholder="Chat name" th:field="*{name}"></div>
+    <div style="text-indent:100px"> <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">wrong name</p></div>
     <br>
-    <button type="submit">Create Chat</button>
+    <div style="text-indent:100px"><button type="submit">Create Chat</button></div>
 </form>
 
 </body>

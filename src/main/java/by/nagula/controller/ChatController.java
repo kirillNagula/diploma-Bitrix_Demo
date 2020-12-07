@@ -36,7 +36,10 @@ public class ChatController {
     }
 
     @PostMapping(path = "/chat")
-    public ModelAndView post(@ModelAttribute("newChat") @Valid ChatDto chat, BindingResult bindingResult, ModelAndView modelAndView, Authentication authentication){
+    public ModelAndView post(@ModelAttribute("newChat") @Valid ChatDto chat,
+                             BindingResult bindingResult,
+                             ModelAndView modelAndView,
+                             Authentication authentication){
         if (bindingResult.hasErrors()){
             modelAndView.setViewName("chat");
         } else {
@@ -63,8 +66,8 @@ public class ChatController {
     }
 
     @PostMapping(path = "/chatAdd/{id}")
-    public ModelAndView postAdd(@PathVariable long id, @ModelAttribute("userId") ChatUserDto chatUserDto,  ModelAndView modelAndView){
-        System.out.println(id);
+    public ModelAndView postAdd(@PathVariable long id, @ModelAttribute("userId") ChatUserDto chatUserDto,
+                                ModelAndView modelAndView){
         Chat chat = chatService.showChatById(id);
         chat.getUserList().add(userService.showUserById(chatUserDto.getUserId()));
         chatService.updateChat(chat);

@@ -28,7 +28,9 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public ModelAndView getPost(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, ModelAndView modelAndView){
+    public ModelAndView getPost(@ModelAttribute("user") @Valid User user,
+                                BindingResult bindingResult,
+                                ModelAndView modelAndView){
         if (bindingResult.hasErrors()){
            modelAndView.setViewName("registration");
         } else {
